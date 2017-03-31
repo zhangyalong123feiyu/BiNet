@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "bibi.com.binet"
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile files('libs/volly-1.0.11.jar')
+    compile files('libs/xUtils-3.1.22.jar')
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.hejunlin.superindicatorlibray:superindicatorlibray:1.0.3'
+    compile 'com.jaeger.statusbaruitl:library:1.0.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
+}

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">比翼联盟</string>
+    <string name="bottome_home">首页</string>
+    <string name="bottome_my">我的</string>
+    <string name="bottome_more">更多</string>
+    <string name="requestbook">保函申请书</string>
+    <string name="exaimenumber">申请通过数</string>
+    <string name="allmoney">总金额</string>
+    <string name="professtionalmove">行业动态</string>
+    <string name="sucess">成功案例</string>
+    <string name="brand">旗下品牌</string>
+    <string name="histroytitle">历史记录</string>
+
+
+    <string name="a_name">挑战者联盟</string>
+    <string name="b_name">老九门，再探古墓</string>
+    <string name="c_name">红色通道，刘烨归来</string>
+    <string name="d_name">神犬小七第二季</string>
+    <string name="e_name">灭罪师</string>
+
+    <string name="common_text">测试普通View轮播</string>
+    <string name="scroll_text">测试ScrollView轮播</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

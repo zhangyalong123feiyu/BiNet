@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/datapic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/opeartperson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="操作人张三"
+        android:layout_toRightOf="@id/datapic"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/opeartedetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所做操作：初始认领"
+        android:layout_toRightOf="@id/opeartperson"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        />
+    <TextView
+        android:id="@+id/examination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="审批意见：ok"
+        android:layout_alignBottom="@id/datapic"
+        android:layout_toRightOf="@id/datapic"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/datatime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2016.12.6"
+        android:layout_alignBottom="@id/datapic"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/examination"
+        android:layout_marginLeft="10dp"
+        />
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_below="@id/datapic"
+    android:background="@color/lightgray"/>
+
+</RelativeLayout>

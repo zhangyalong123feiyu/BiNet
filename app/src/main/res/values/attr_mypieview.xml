@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyPieView">
+        <attr name="bigCircleRadus" format="dimension"></attr>
+        <attr name="smallCircleRadus" format="dimension"></attr>
+    </declare-styleable>
+</resources>
