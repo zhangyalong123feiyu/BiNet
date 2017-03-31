@@ -82,6 +82,7 @@ public class Fragmentpro extends BaseFragement<HomePresenter> {
                 prorecyclerview.setNestedScrollingEnabled(false);//禁止recyclerview在垂直方向滚动
                 adapter=new ProFessionalAdapter(getActivity(),lists);
                 prorecyclerview.setAdapter(adapter);
+                Toast.makeText(getActivity(),"this",Toast.LENGTH_SHORT).show();
             }
             @Override
             public void OnFailed(String errorinfo) {
