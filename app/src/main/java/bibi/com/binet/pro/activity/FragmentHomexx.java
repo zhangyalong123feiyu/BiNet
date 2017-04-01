@@ -1,17 +1,22 @@
 package bibi.com.binet.pro.activity;
 
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -32,6 +37,7 @@ import com.bumptech.glide.Glide;
 import com.jaeger.library.StatusBarUtil;
 
 import bibi.com.binet.R;
+import bibi.com.binet.pro.Constants.Constants;
 import bibi.com.binet.pro.Constants.ProConstant;
 import bibi.com.binet.pro.base.view.BaseFragement;
 import bibi.com.binet.pro.builder.MyViewPager;
@@ -124,13 +130,42 @@ public class FragmentHomexx extends BaseFragement<HomePresenter> implements View
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        haspermissons();
         view = inflater.inflate(R.layout.fragment_homexx, container, false);
         ButterKnife.bind(this, view);
         setListenter();
       //  StatusBarUtil.setColor(getActivity(),Color.argb(0,127, 255, 212));
 
-
         return view;
+    }
+
+    private void haspermissons() {
+        if (ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            requestPermisson();
+        }
+    }
+
+    private void requestPermisson() {
+        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_PHONE_STATE}, Constants.READPHONE_STATE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+        		case Constants.READPHONE_STATE:
+        			if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+
+                    }else {
+                        ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.READ_PHONE_STATE);
+                    }
+        			break;
+
+        		default:
+        			break;
+        		}
     }
 
     @Override

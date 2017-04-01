@@ -1,7 +1,9 @@
 package bibi.com.binet.pro.model;
 
+import android.Manifest;
 import android.content.Context;
 import android.provider.SyncStateContract;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 
 import com.android.volley.AuthFailureError;
@@ -19,6 +21,7 @@ import org.xutils.x;
 import java.util.HashMap;
 import java.util.Map;
 
+import bibi.com.binet.pro.Constants.Constants;
 import bibi.com.binet.pro.Constants.ProConstant;
 import bibi.com.binet.pro.base.model.BaseModel;
 import bibi.com.binet.pro.builder.MyCallBack;
@@ -59,6 +62,7 @@ public class HomeModel extends BaseModel {
 
     }*/
    public void getData(MyCallBack myCallBack){
+
        imei = ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
        RequestParams requestParams=new RequestParams(ProConstant.homedataurl);
        requestParams.addBodyParameter("v","1");

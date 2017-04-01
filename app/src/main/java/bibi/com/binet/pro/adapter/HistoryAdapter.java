@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 /**
  * Created by bibinet on 2017-2-17.
  */
@@ -26,6 +28,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         public HistoryViewHolder(View itemView) {
             super(itemView);
+            AutoUtils.autoSize(itemView);
         }
     }
 }
