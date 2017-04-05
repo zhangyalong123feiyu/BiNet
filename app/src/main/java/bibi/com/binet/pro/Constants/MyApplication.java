@@ -1,4 +1,4 @@
-package bibi.com.binet.pro.Constants;
+package bibi.com.binet.pro.constants;
 
 import android.app.Application;
 

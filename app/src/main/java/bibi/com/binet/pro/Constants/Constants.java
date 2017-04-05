@@ -1,4 +1,4 @@
-package bibi.com.binet.pro.Constants;
+package bibi.com.binet.pro.constants;
 
 /**
  * Created by bibinet on 2017-4-1.

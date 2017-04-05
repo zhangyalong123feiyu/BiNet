@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bibi.com.binet.R;
-import bibi.com.binet.pro.Constants.ProConstant;
+import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.bean.ImageInfo;
 import bibi.com.binet.pro.bean.KnowledgeBean;
 import bibi.com.binet.pro.util.DensityUtil;

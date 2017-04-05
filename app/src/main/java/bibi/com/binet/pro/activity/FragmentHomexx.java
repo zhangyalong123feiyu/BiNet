@@ -2,11 +2,8 @@ package bibi.com.binet.pro.activity;
 
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -14,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -24,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,11 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.jaeger.library.StatusBarUtil;
 
 import bibi.com.binet.R;
-import bibi.com.binet.pro.Constants.Constants;
-import bibi.com.binet.pro.Constants.ProConstant;
+import bibi.com.binet.pro.constants.Constants;
+import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.base.view.BaseFragement;
 import bibi.com.binet.pro.builder.MyViewPager;
 import bibi.com.binet.pro.presenter.HomePresenter;

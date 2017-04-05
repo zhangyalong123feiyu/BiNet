@@ -1,6 +1,5 @@
 package bibi.com.binet.pro.activity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -8,15 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import bibi.com.binet.R;
 import bibi.com.binet.mvp.view.MvpView;
-import bibi.com.binet.pro.Constants.Constants;
-import butterknife.ButterKnife;
+import bibi.com.binet.pro.constants.Constants;
 
 /**
  * Created by bibinet on 2017-2-13.

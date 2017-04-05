@@ -5,7 +5,7 @@ import android.content.Context;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
-import bibi.com.binet.pro.Constants.ProConstant;
+import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.base.model.BaseModel;
 import bibi.com.binet.pro.builder.MyCallBack;
 

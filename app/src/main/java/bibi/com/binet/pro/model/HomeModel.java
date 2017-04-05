@@ -1,28 +1,12 @@
 package bibi.com.binet.pro.model;
 
-import android.Manifest;
 import android.content.Context;
-import android.provider.SyncStateContract;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import bibi.com.binet.pro.Constants.Constants;
-import bibi.com.binet.pro.Constants.ProConstant;
+import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.base.model.BaseModel;
 import bibi.com.binet.pro.builder.MyCallBack;
 

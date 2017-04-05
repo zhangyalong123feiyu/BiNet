@@ -1,7 +1,6 @@
 package bibi.com.binet.pro.activity;
 
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -29,7 +28,7 @@ import java.util.Date;
 import java.util.List;
 
 import bibi.com.binet.R;
-import bibi.com.binet.pro.Constants.ProConstant;
+import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.base.presenter.BasePresenter;
 import bibi.com.binet.pro.base.view.BaseFragement;
 import bibi.com.binet.pro.bean.ImageInfo;
