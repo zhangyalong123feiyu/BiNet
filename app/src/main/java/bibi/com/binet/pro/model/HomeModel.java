@@ -71,5 +71,6 @@ public class HomeModel extends BaseModel {
        requestParams.addBodyParameter("imei",imei);
        x.http().get(requestParams,myCallBack);
 
+
    }
 }
