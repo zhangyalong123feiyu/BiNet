@@ -129,7 +129,6 @@ public class FragmentHomexx extends BaseFragement<HomePresenter> implements View
         ButterKnife.bind(this, view);
         setListenter();
       //  StatusBarUtil.setColor(getActivity(),Color.argb(0,127, 255, 212));
-
         return view;
     }
 

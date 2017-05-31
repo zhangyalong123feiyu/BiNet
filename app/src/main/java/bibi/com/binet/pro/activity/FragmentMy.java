@@ -69,7 +69,6 @@ public class FragmentMy extends Fragment implements View.OnClickListener {
                     editor.commit();
                     initBottomSelect();
         			break;
-
         		case R.id.operationlogin:
                     ((MainActivity)getActivity()).operationLogin();
                     editor.putString("longintype","3");

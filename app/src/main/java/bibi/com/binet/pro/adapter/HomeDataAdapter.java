@@ -3,6 +3,7 @@ package bibi.com.binet.pro.adapter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -35,7 +36,7 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     private Context context;
-    private List<KnowledgeBean> datas = new ArrayList<>();
+   private List<KnowledgeBean> datas = new ArrayList<>();
     private int type;
     private int TYPEONE = 1;
     private int TYPETWO = 2;
@@ -43,7 +44,7 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private int TYPEFOUR = 4;
     private int lastPosition;
 
-    public HomeDataAdapter(Context context, List<KnowledgeBean> datas, int type) {
+    public HomeDataAdapter(Context context,List<KnowledgeBean> datas , int type) {
         this.context = context;
         this.datas = datas;
         this.type = type;
@@ -68,10 +69,12 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
     }
-
+public  void resetData(List<KnowledgeBean> datas){
+    this.datas=datas;
+}
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = null;
+     /*   View view = null;
         RecyclerView.ViewHolder holder = null;
         if (viewType == 1) {
             view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
@@ -86,6 +89,16 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             view = LayoutInflater.from(context).inflate(R.layout.item_homedatabrand, parent, false);
             holder = new ViewHolderFour(view);
         }
+        return holder;*/
+        View view = null;
+        RecyclerView.ViewHolder holder = null;
+        if (viewType == 1) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
+            holder = new ViewHolderOne(view);
+        } else if (viewType == 2) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_fragementcontaner, parent, false);
+            holder = new ViewHolderTwo(view);
+        }
         return holder;
     }
 
@@ -93,7 +106,7 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position) == 1) {
+     /*   if (getItemViewType(position) == 1) {
 
             ((ViewHolderOne) holder).professonalmove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,6 +130,18 @@ public class HomeDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             ((ViewHolderTwo) holder).dataname.setText(datas.get(position - 1).getTitle());
             ((ViewHolderTwo) holder).datadetail.setText(datas.get(position - 1).getContent());
             ((ViewHolderTwo) holder).datatime.setText(datas.get(position - 1).getTime());
+        }*/
+        if (getItemViewType(position) == 1) {
+
+            ((ViewHolderOne) holder).professonalmove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        } else if (getItemViewType(position)==2){
+
+
         }
 
     }

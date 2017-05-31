@@ -40,16 +40,16 @@ public class MainActivity<P extends BasePresenter> extends BaseActivity {
     RelativeLayout fragementcontainer;
     public static Fragment[] fragments;
     private FragmentHome fragementhome;
-    private FragmentHomex fragementhomex;
+    private FragmentHomexx fragementhomex;
     private FragmentHomexx fragementhomexx;
-    public static FragmentMy fragementmy;
+    private FragmentMy fragementmy;
     private FragmentMore fragementmore;
     private Fragment fragmentCompany;
     private Fragment fragementOperation;
     private Fragment fragmentBank;
     public static RelativeLayout[] mTabs;
     private long mPressedTime = 0;
-    private static int index;
+    private  int index;
     public static int currentTabIndex = 0;
     private boolean islogin = false;
     private String logintype;
@@ -97,14 +97,14 @@ public class MainActivity<P extends BasePresenter> extends BaseActivity {
         logintype = sharedPreferences.getString("longintype", "0");
         Log.i("TAG",logintype+"logintype-----------------------");
         fragementhome = new FragmentHome();
-        fragementhomex = new FragmentHomex();
+        fragementhomex = new FragmentHomexx();
         fragementhomexx = new FragmentHomexx();
         fragmentCompany = new FragmentCompany();
         fragementOperation=new FragmentOperation();
         fragmentBank=new FragmentBank();
         fragementmy = new FragmentMy();
         fragementmore = new FragmentMore();
-        fragments = new Fragment[]{fragementhomexx, fragementmy, fragementmore};
+        fragments = new Fragment[]{fragementhomex, fragementmy, fragementmore};
         mTabs = new RelativeLayout[3];
         mTabs[0] = (RelativeLayout) findViewById(R.id.bottomhome);
         mTabs[1] = (RelativeLayout) findViewById(R.id.bottommy);
@@ -130,31 +130,31 @@ public class MainActivity<P extends BasePresenter> extends BaseActivity {
         }
 
     public void bankLogin() {
-        fragments = new Fragment[]{fragementhomexx, fragmentBank, fragementmore};
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomexx).show(fragementhomexx).
+        fragments = new Fragment[]{fragementhomex, fragmentBank, fragementmore};
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomex).show(fragementhomex).
                 add(R.id.fragementcontainer, fragmentBank).hide(fragmentBank).add(R.id.fragementcontainer, fragementmore).hide(fragementmore)
                 .commit();
        // mTabs[1].setSelected(true);
     }
 
     public void operationLogin() {
-        fragments = new Fragment[]{fragementhomexx, fragementOperation, fragementmore};
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomexx).show(fragementhomexx).
+        fragments = new Fragment[]{fragementhomex, fragementOperation, fragementmore};
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomex).show(fragementhomex).
                 add(R.id.fragementcontainer, fragementOperation).hide(fragementOperation).add(R.id.fragementcontainer, fragementmore).hide(fragementmore)
                 .commit();
 
     }
 
     public void companyLogin() {
-        fragments = new Fragment[]{fragementhomexx, fragmentCompany, fragementmore};
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomexx).show(fragementhomexx).
+        fragments = new Fragment[]{fragementhomex, fragmentCompany, fragementmore};
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomex).show(fragementhomex).
                 add(R.id.fragementcontainer, fragmentCompany).hide(fragmentCompany).add(R.id.fragementcontainer, fragementmore).hide(fragementmore)
                 .commit();
     }
 
     private void noLogin() {
-        fragments = new Fragment[]{fragementhomexx, fragementmy, fragementmore};
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomexx).show(fragementhomexx).
+        fragments = new Fragment[]{fragementhomex, fragementmy, fragementmore};
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragementcontainer, fragementhomex).show(fragementhomex).
                 add(R.id.fragementcontainer, fragementmy).hide(fragementmy).add(R.id.fragementcontainer, fragementmore).hide(fragementmore)
                 .commit();
     }

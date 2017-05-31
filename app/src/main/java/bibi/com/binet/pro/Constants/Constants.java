@@ -5,4 +5,6 @@ package bibi.com.binet.pro.constants;
  */
 public class Constants {
     public static final int READPHONE_STATE=1;
+
+
 }

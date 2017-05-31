@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -26,6 +27,7 @@ import java.util.List;
 
 import bibi.com.binet.R;
 import bibi.com.binet.pro.adapter.HomeDataAdapter;
+import bibi.com.binet.pro.adapter.SucessAdapter;
 import bibi.com.binet.pro.base.presenter.BasePresenter;
 import bibi.com.binet.pro.base.view.BaseFragement;
 import bibi.com.binet.pro.bean.ImageInfo;
@@ -58,6 +60,7 @@ public class FragmentHomex extends BaseFragement<HomePresenter> implements ViewP
     private int mCurrentPosition=0;
     private int mSuspensionHeight;
     private GridLayoutManager gridLayoutManager;
+    private HomeDataAdapter adapter;
 
     @Override
     public HomePresenter bindPresenter() {
@@ -79,6 +82,37 @@ public class FragmentHomex extends BaseFragement<HomePresenter> implements ViewP
         return view;
     }
 
+    private void initView() {
+        linearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+
+        gridLayoutManager=new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position==0) {
+                    return 2;
+                }else {
+                    return 1;
+                }
+            }
+        });
+        homedatarecyclerview.setLayoutManager(gridLayoutManager);
+        homedatarecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                mSuspensionHeight = suspensionBar.getHeight();
+            }
+            @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                View view = gridLayoutManager.findViewByPosition(0);
+                if (view != null) {
+                    suspensionBar.setVisibility(View.GONE);
+                }else {
+                    suspensionBar.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
     private void initData() {
         presenter.loadData(new BasePresenter.OnUiThreadListioner<KnowledgeResult>() {
             @Override
@@ -93,23 +127,8 @@ public class FragmentHomex extends BaseFragement<HomePresenter> implements ViewP
                     }
                     Log.i("TAG",lists.size()+"-------------");
                 }
-                homedatarecyclerview.setLayoutManager(gridLayoutManager);
-                homedatarecyclerview.setAdapter(new HomeDataAdapter(getActivity(),lists,3));
-                homedatarecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                    @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                        super.onScrollStateChanged(recyclerView, newState);
-                        mSuspensionHeight = suspensionBar.getHeight();
-                    }
-                    @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                        super.onScrolled(recyclerView, dx, dy);
-                        View view = linearLayoutManager.findViewByPosition(0);
-                        if (view != null) {
-                         suspensionBar.setVisibility(View.GONE);
-                        }else {
-                            suspensionBar.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
+                adapter=new HomeDataAdapter(getActivity(),lists,3);
+                homedatarecyclerview.setAdapter(adapter);
             }
             @Override
             public void OnFailed(String errorinfo) {
@@ -118,12 +137,6 @@ public class FragmentHomex extends BaseFragement<HomePresenter> implements ViewP
         });
     }
 
-    private void initView() {
-        linearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-
-         gridLayoutManager=new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
-
-    }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -145,12 +158,32 @@ public class FragmentHomex extends BaseFragement<HomePresenter> implements ViewP
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.professonalmove:
+                initData();
                 break;
             case R.id.sucess:
-                homedatarecyclerview.setLayoutManager(gridLayoutManager);
-              //  homedatarecyclerview.setAdapter();
-                break;
-            case R.id.brand:
+                Toast.makeText(getActivity(),"dianji",Toast.LENGTH_SHORT).show();
+                presenter.loadData(new BasePresenter.OnUiThreadListioner<KnowledgeResult>() {
+                    @Override
+                    public void OnSuccess(KnowledgeResult data) {
+                        int code = data.getHead().getCode();
+                        Log.i("TAG",code+"-code------------");
+                        if (code==200){
+                            for (KnowledgeInfo info : data.getData().getKnowledage()) {
+                                lists.add(new KnowledgeBean(info.getId(), info.getUrl(), info.getPicUrl(), info.getTitle(),
+                                        info.getDescription(), DateUtils.datetimeFormatter(new Date(info.getUpdateTime())),
+                                        "title"));
+                            }
+                            Log.i("TAG",lists.size()+"-------------");
+                        }
+                        adapter.resetData(lists);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void OnFailed(String errorinfo) {
+                        Log.i("TAG",errorinfo+"------error-------");
+                    }
+                });
                 break;
         }
     }

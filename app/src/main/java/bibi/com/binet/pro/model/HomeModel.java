@@ -1,11 +1,15 @@
 package bibi.com.binet.pro.model;
 
 import android.content.Context;
+import android.os.Environment;
 import android.telephony.TelephonyManager;
 
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.io.File;
+
+import bibi.com.binet.pro.builder.MyCacheCallBack;
 import bibi.com.binet.pro.constants.ProConstant;
 import bibi.com.binet.pro.base.model.BaseModel;
 import bibi.com.binet.pro.builder.MyCallBack;
@@ -14,6 +18,8 @@ import bibi.com.binet.pro.builder.MyCallBack;
  * Created by bibinet on 2017-2-13.
  */
 public class HomeModel extends BaseModel {
+    private String cacheName="cacheDirc";
+    private File cacheFile=new File(Environment.getExternalStorageDirectory(),"cachefile");
     public HomeModel(Context context) {
         super(context);
     }
@@ -45,7 +51,7 @@ public class HomeModel extends BaseModel {
         requestQueue.start();
 
     }*/
-   public void getData(MyCallBack myCallBack){
+   public void getData(MyCacheCallBack myCallBack){
 
        imei = ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
        RequestParams requestParams=new RequestParams(ProConstant.homedataurl);
@@ -53,6 +59,9 @@ public class HomeModel extends BaseModel {
        requestParams.addBodyParameter("type","1");
        requestParams.addBodyParameter("idList",imei);
        requestParams.addBodyParameter("imei",imei);
+       requestParams.setCacheDirName(cacheName);
+       requestParams.setCacheMaxAge(60*60*24*15);
+       requestParams.setCacheSize(1024*1024*30);
        x.http().get(requestParams,myCallBack);
 
 

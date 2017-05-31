@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import bibi.com.binet.pro.base.presenter.BasePresenter;
 import bibi.com.binet.pro.bean.KnowledgeData;
 import bibi.com.binet.pro.bean.KnowledgeResult;
+import bibi.com.binet.pro.builder.MyCacheCallBack;
 import bibi.com.binet.pro.builder.MyCallBack;
 import bibi.com.binet.pro.model.HomeModel;
 
@@ -23,12 +24,13 @@ public class HomePresenter extends BasePresenter<HomeModel>  {
         return new HomeModel(getContext());
     }
     public void loadData(final OnUiThreadListioner onUiThreadListioner) {
-        getModel().getData(new MyCallBack(){
+        getModel().getData(new MyCacheCallBack(){
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 KnowledgeResult homejson = getGson().fromJson(s, KnowledgeResult.class);
                 onUiThreadListioner.OnSuccess(homejson);
+                Log.i("TAG","使用网络进行请求");
 
             }
 
@@ -36,6 +38,14 @@ public class HomePresenter extends BasePresenter<HomeModel>  {
             public void onError(Throwable throwable, boolean b) {
                 super.onError(throwable, b);
                 onUiThreadListioner.OnFailed(throwable.getMessage());
+            }
+
+            @Override
+            public boolean onCache(String s) {
+                KnowledgeResult homejson = getGson().fromJson(s, KnowledgeResult.class);
+                onUiThreadListioner.OnSuccess(homejson);
+                return super.onCache(s);
+
             }
         });
 
